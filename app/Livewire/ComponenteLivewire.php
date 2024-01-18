@@ -13,6 +13,7 @@ class ComponenteLivewire extends Component
     public function incrementar()
     {
         $this->contador++;
+        $this->listaItems[] = $this->contador;
         $this->dispatch('contador-cambiado', $this->contador);
     }
 
