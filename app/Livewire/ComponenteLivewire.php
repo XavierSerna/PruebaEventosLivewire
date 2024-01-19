@@ -7,22 +7,12 @@ use App\Models\Campo;
 
 class ComponenteLivewire extends Component
 {
-    public $contador = 0;
-    public $listaItems = [];
     public $listaBotones = [];
+    public $campos;
 
-    public function incrementar()
+    public function mount()
     {
-        $this->contador++;
-        $this->listaItems[] = $this->contador;
-        $this->dispatch('contador-cambiado', $this->contador);
-    }
-
-    public function disminuir()
-    {
-        $this->contador--;
-        $this->listaItems[] = $this->contador;
-        $this->dispatch('contador-cambiado', $this->contador);
+        $this->campos = Campo::all();
     }
 
     public function listar($type)
@@ -31,6 +21,12 @@ class ComponenteLivewire extends Component
         $campo = new Campo;
         $campo->tipo = $type;
         $campo->save();
+        $this->campos = Campo::all();
+    }
+
+    public function getCamposProperty()
+    {
+        return Campo::all();
     }
 
     public function render()

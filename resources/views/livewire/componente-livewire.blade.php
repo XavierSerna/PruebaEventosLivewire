@@ -1,15 +1,5 @@
 <div>
     {{-- Care about people's approval and you will be their prisoner. --}}
-    <button wire:click="incrementar">Incrementar</button>
-    <button wire:click="disminuir">Disminuir</button>
-    <h1>{{ $contador }}</h1>
-    <div>
-        <ul>
-            @foreach($listaItems as $item)
-            <li>{{ $item }}</li>
-            @endforeach
-        </ul>
-    </div>
     <div>
         @foreach(['text'=>'Text', 'textarea'=>'Textarea', 'checkbox'=>'Checkbox'] as $type=>$label)
         <button wire:click="listar('{{ $type }}')" class="btn btn-light" data-type="{{ $type }}">
@@ -26,4 +16,20 @@
             @endforeach
         </ul>
     </div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tipo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($this->campos as $campo)
+                <tr>
+                    <td>{{ $campo->id }}</td>
+                    <td>{{ $campo->tipo }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>

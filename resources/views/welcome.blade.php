@@ -9,12 +9,12 @@
 <body>
     @livewire('ComponenteLivewire')
     
-    <script>
+<!--     <script>
         document.addEventListener('livewire:init', () => {
             Livewire.on('contador-cambiado', (contador) => {
                 alert('El contador ha cambiado a ' + contador);
             });
         });
-    </script>
+    </script> -->
 </body>
 </html>
