@@ -9,12 +9,23 @@
 <body>
     @livewire('ComponenteLivewire')
     
-<!--     <script>
-        document.addEventListener('livewire:init', () => {
-            Livewire.on('contador-cambiado', (contador) => {
-                alert('El contador ha cambiado a ' + contador);
-            });
-        });
-    </script> -->
+    <script>
+    function iniciarArrastre(event, type) {
+        console.log("arrastrando un elemento: ", type);
+        event.dataTransfer.setData("text", type);
+    }
+
+    function permitirSoltar(event) {
+        console.log("Elemento arrastrado sobre el área de destino");
+        event.preventDefault();
+    }
+
+    function manejarSoltar(event) {
+        event.preventDefault();
+        var type = event.dataTransfer.getData("text");
+        console.log("Elemento soltado de tipo:", type);
+        Livewire.dispatch('elementoArrastrado', { tipo: type});
+    }
+    </script>
 </body>
 </html>

@@ -4,24 +4,32 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Campo;
+use Livewire\Attributes\On;
+use Illuminate\Support\Facades\Log;
 
 class ComponenteLivewire extends Component
 {
     public $campos;
+
+    #[On('elementoArrastrado')]
+    public function manejarElementoArrastrado($tipo)
+    {
+        Log::info('addField recibido con el valor: ' . $tipo);
+    }
 
     public function mount()
     {
         $this->campos = Campo::all();
     }
 
-    public function listar($type)
+/*     public function listar($type)
     {
         $campo = new Campo;
         $campo->tipo = $type;
         $campo->save();
         $this->campos = Campo::all();
     }
-
+ */
     public function eliminar($id)
     {
         $campo = Campo::find($id);
