@@ -1,26 +1,19 @@
 <div>
     {{-- Care about people's approval and you will be their prisoner. --}}
-    <div>
-        @foreach(['text'=>'Text', 'textarea'=>'Textarea', 'checkbox'=>'Checkbox'] as $type=>$label)
+    <div class="m-4">
+        @foreach(['text'=>'Text', 'textarea'=>'Textarea', 'checkbox'=>'Checkbox', 'radio' => 'Radio', 'select' => 'Dropdown', 'number' => 'Number', 'email' => 'Email', 'tel' => 'Phone'] as $type=>$label)
         <button wire:click="listar('{{ $type }}')" class="btn btn-light" data-type="{{ $type }}">
             {{ $label }}
         </button>
         @endforeach
     </div>
-    <div class="card" style="width: 18rem;">
-        <ul class="list-group list-group-flush">
-            @foreach($listaBotones as $boton)
-            <li class="list-group-item">
-                {{ $boton }}
-            </li>
-            @endforeach
-        </ul>
-    </div>
-    <table>
+    <table class="table table-striped m-4">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Tipo</th>
+                <th>Creado</th>
+                <th>Actualizado</th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +21,8 @@
                 <tr>
                     <td>{{ $campo->id }}</td>
                     <td>{{ $campo->tipo }}</td>
+                    <td>{{ $campo->created_at }}</td>
+                    <td>{{ $campo->updated_at }}</td>
                 </tr>
             @endforeach
         </tbody>

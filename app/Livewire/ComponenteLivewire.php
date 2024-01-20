@@ -7,7 +7,6 @@ use App\Models\Campo;
 
 class ComponenteLivewire extends Component
 {
-    public $listaBotones = [];
     public $campos;
 
     public function mount()
@@ -17,16 +16,10 @@ class ComponenteLivewire extends Component
 
     public function listar($type)
     {
-        $this->listaBotones[] = $type;
         $campo = new Campo;
         $campo->tipo = $type;
         $campo->save();
         $this->campos = Campo::all();
-    }
-
-    public function getCamposProperty()
-    {
-        return Campo::all();
     }
 
     public function render()
