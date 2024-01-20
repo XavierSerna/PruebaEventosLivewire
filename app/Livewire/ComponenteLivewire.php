@@ -11,25 +11,21 @@ class ComponenteLivewire extends Component
 {
     public $campos;
 
-    #[On('elementoArrastrado')]
-    public function manejarElementoArrastrado($tipo)
-    {
-        Log::info('addField recibido con el valor: ' . $tipo);
-    }
-
     public function mount()
     {
         $this->campos = Campo::all();
     }
 
-/*     public function listar($type)
+    #[On('elementoArrastrado')]
+    public function manejarElementoArrastrado($tipo)
     {
+        Log::info('addField recibido con el valor: ' . $tipo);
         $campo = new Campo;
-        $campo->tipo = $type;
+        $campo->tipo = $tipo;
         $campo->save();
         $this->campos = Campo::all();
     }
- */
+
     public function eliminar($id)
     {
         $campo = Campo::find($id);
