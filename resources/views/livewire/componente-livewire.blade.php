@@ -23,6 +23,7 @@
                     <td>{{ $campo->tipo }}</td>
                     <td>{{ $campo->created_at }}</td>
                     <td>{{ $campo->updated_at }}</td>
+                    <td><button wire:click="eliminar('{{ $campo->id }}')" class="btn btn-danger">Eliminar</button></td>
                 </tr>
             @endforeach
         </tbody>

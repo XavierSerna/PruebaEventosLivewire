@@ -22,6 +22,15 @@ class ComponenteLivewire extends Component
         $this->campos = Campo::all();
     }
 
+    public function eliminar($id)
+    {
+        $campo = Campo::find($id);
+        if($campo) {
+            $campo->delete();
+            $this->campos = Campo::all();
+        }
+    }
+
     public function render()
     {
         return view('livewire.componente-livewire');
